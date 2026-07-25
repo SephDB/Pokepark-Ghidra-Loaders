@@ -28,6 +28,7 @@ import ghidra.app.util.bin.ByteProvider;
 import ghidra.app.util.importer.MessageLog;
 import ghidra.app.util.opinion.AbstractProgramWrapperLoader;
 import ghidra.app.util.opinion.LoadSpec;
+import ghidra.app.util.opinion.Loader.ImporterSettings;
 import ghidra.program.database.mem.FileBytes;
 import ghidra.program.flatapi.FlatProgramAPI;
 import ghidra.program.model.address.Address;
@@ -67,7 +68,6 @@ public class FScript_bytecodeLoader extends AbstractProgramWrapperLoader {
 		return loadSpecs;
 	}
 
-	@Override
 	protected void load(ByteProvider provider, LoadSpec loadSpec, List<Option> options,
 			Program program, TaskMonitor monitor, MessageLog log)
 			throws CancelledException, IOException {
@@ -115,5 +115,10 @@ public class FScript_bytecodeLoader extends AbstractProgramWrapperLoader {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	protected void load(Program program, ImporterSettings settings) throws CancelledException, IOException {
+		load(settings.provider(),settings.loadSpec(),settings.options(),program,settings.monitor(),settings.log());
 	}
 }

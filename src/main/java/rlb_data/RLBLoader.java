@@ -46,10 +46,8 @@ public class RLBLoader extends AbstractProgramWrapperLoader {
 		return "RLB Loader";
 	}
 
-	@Override
 	protected void load(ByteProvider provider, LoadSpec loadSpec, List<Option> options, Program program,
 			TaskMonitor monitor, MessageLog log) throws CancelledException, IOException {
-		// TODO Auto-generated method stub
 		BinaryReader reader = new BinaryReader(provider,false);
 		FlatProgramAPI api = new FlatProgramAPI(program, monitor);
 		
@@ -95,6 +93,12 @@ public class RLBLoader extends AbstractProgramWrapperLoader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	protected void load(Program program, ImporterSettings settings) throws CancelledException, IOException {
+		// TODO Auto-generated method stub
+		load(settings.provider(),settings.loadSpec(),settings.options(),program,settings.monitor(),settings.log());
 	}
 
 }
