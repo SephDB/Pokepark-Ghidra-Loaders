@@ -304,98 +304,98 @@ op4: operand is operand {
 :eq is opcode=0x16 & operand=0xb {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1==arg2);
 	pushSP(res);
 }
 :neq is opcode=0x16 & operand=0xc {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1!=arg2);
 	pushSP(res);
 }
-:lt is opcode=0x16 & operand=0xd {
+:gt is opcode=0x16 & operand=0xd {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
-	local res:4 = zext(arg1<arg2);
-	pushSP(res);
-}
-:gt is opcode=0x16 & operand=0xe {
-	local arg1:4;
-	local arg2:4;
 	popSP(arg1);
-	popSP(arg2);
 	local res:4 = zext(arg1>arg2);
 	pushSP(res);
 }
-:le is opcode=0x16 & operand=0xf {
+:lt is opcode=0x16 & operand=0xe {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
-	local res:4 = zext(arg1<=arg2);
+	popSP(arg1);
+	local res:4 = zext(arg1<arg2);
 	pushSP(res);
 }
-:ge is opcode=0x16 & operand=0x10 {
+:ge is opcode=0x16 & operand=0xf {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1>=arg2);
+	pushSP(res);
+}
+:le is opcode=0x16 & operand=0x10 {
+	local arg1:4;
+	local arg2:4;
+	popSP(arg2);
+	popSP(arg1);
+	local res:4 = zext(arg1<=arg2);
 	pushSP(res);
 }
 
 :feq is opcode=0x17 & operand=0xb {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1 f== arg2);
 	pushSP(res);
 }
 :fneq is opcode=0x17 & operand=0xc {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1 f!= arg2);
 	pushSP(res);
 }
-:flt is opcode=0x17 & operand=0xd {
+:fgt is opcode=0x17 & operand=0xd {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
-	local res:4 = zext(arg1 f< arg2);
-	pushSP(res);
-}
-:fgt is opcode=0x17 & operand=0xe {
-	local arg1:4;
-	local arg2:4;
 	popSP(arg1);
-	popSP(arg2);
 	local res:4 = zext(arg1 f> arg2);
 	pushSP(res);
 }
-:fle is opcode=0x17 & operand=0xf {
+:flt is opcode=0x17 & operand=0xe {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
-	local res:4 = zext(arg1 f<= arg2);
+	popSP(arg1);
+	local res:4 = zext(arg1 f< arg2);
 	pushSP(res);
 }
-:fge is opcode=0x17 & operand=0x10 {
+:fge is opcode=0x17 & operand=0xf {
 	local arg1:4;
 	local arg2:4;
-	popSP(arg1);
 	popSP(arg2);
+	popSP(arg1);
 	local res:4 = zext(arg1 f>= arg2);
+	pushSP(res);
+}
+:fle is opcode=0x17 & operand=0x10 {
+	local arg1:4;
+	local arg2:4;
+	popSP(arg2);
+	popSP(arg1);
+	local res:4 = zext(arg1 f<= arg2);
 	pushSP(res);
 }
 
