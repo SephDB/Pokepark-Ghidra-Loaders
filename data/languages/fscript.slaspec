@@ -67,7 +67,7 @@ op4: operand is operand {
 	if(delay == 0) goto inst_next;
 	Pause(delay-1);
 }
-:set_arg_mode is opcode=0x2 & subtype=5 {} #Makes the next load_arg not set the script ret local var???
+:load_arg_ref is opcode=0x2 & subtype=5 {} #Next load_arg creates a pointer to instead of loading the value
 
 
 :call opoff is opcode=0x3 & opoff {call opoff;}
